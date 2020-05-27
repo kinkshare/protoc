@@ -4,6 +4,7 @@ ARG alpine=3.11
 FROM golang:$go-alpine$alpine AS build
 
 ENV protoc_version=3.12.2
+ENV GO111MODULE=on
 
 RUN set -ex && apk --update --no-cache add \
     ca-certificates \
