@@ -22,6 +22,8 @@ RUN set -ex && apk --update --no-cache add \
 
 FROM alpine:$alpine AS protoc
 
+RUN set -ex && apk --update --no-cache add libc6-compat
+
 COPY --from=build /opt/protoc/out/bin/protoc /usr/local/bin/protoc
 COPY --from=build /opt/protoc/out/include /usr/local/protoc-include
 COPY --from=build /go/bin/protoc-gen-go /usr/local/bin/protoc-gen-go
