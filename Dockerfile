@@ -10,16 +10,13 @@ RUN set -ex && apk --update --no-cache add \
     bash \
     curl \
     git \
-    tree \
     && \
     PROTOC_DIR="/opt/protoc" && \
     mkdir -p "${PROTOC_DIR}" && \
     mkdir -p "${PROTOC_DIR}/out" && \
     curl --silent --show-error --fail --location --output "${PROTOC_DIR}/protoc.zip" "https://github.com/protocolbuffers/protobuf/releases/download/v${protoc_version}/protoc-${protoc_version}-$(uname -s)-$(uname -m).zip" && \
     unzip "${PROTOC_DIR}/protoc.zip" -d "${PROTOC_DIR}/out" && \
-    go get -v google.golang.org/protobuf/cmd/protoc-gen-go && \
-    tree /go && \
-    tree /opt/protoc
+    go get -v google.golang.org/protobuf/cmd/protoc-gen-go
 
 FROM build AS protoc
 
