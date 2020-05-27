@@ -16,7 +16,7 @@ RUN set -ex && apk --update --no-cache add \
     mkdir -p "${PROTOC_DIR}/out" && \
     curl --silent --show-error --fail --location --output "${PROTOC_DIR}/protoc.zip" "https://github.com/protocolbuffers/protobuf/releases/download/v${protoc_version}/protoc-${protoc_version}-$(uname -s)-$(uname -m).zip" && \
     unzip "${PROTOC_DIR}/protoc.zip" -d "${PROTOC_DIR}/out" && \
-    go get -v google.golang.org/protobuf/cmd/protoc-gen-go
+    go get github.com/golang/protobuf/protoc-gen-go@v1.4.2
 
 FROM build AS protoc
 
