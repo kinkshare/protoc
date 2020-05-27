@@ -20,7 +20,7 @@ RUN set -ex && apk --update --no-cache add \
     unzip "${PROTOC_DIR}/protoc.zip" -d "${PROTOC_DIR}/out" && \
     go get github.com/golang/protobuf/protoc-gen-go@v"${protoc_gen_go_version}"
 
-FROM build AS protoc
+FROM alpine:$alpine AS protoc
 
 COPY --from=build /opt/protoc/out/bin/protoc /usr/local/bin/protoc
 COPY --from=build /opt/protoc/out/include /usr/local/protoc-include
